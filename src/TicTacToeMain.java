@@ -21,9 +21,11 @@ public class TicTacToeMain {
         int dimension = 3;
         List<Player> players = new ArrayList<>();
 
-        players.add( new Bot("endhiran", '0', PlayerType.BOT,
+
+        players.add( new Bot("RoBot", '0', PlayerType.BOT,
                 2, BotDifficultyLevel.EASY, new EasyBotPlayingStrategy()) );
         players.add( new Player("Thellai", 'x', PlayerType.HUMAN, 1));
+
 
 
 

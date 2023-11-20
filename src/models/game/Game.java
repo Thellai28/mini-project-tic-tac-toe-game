@@ -5,6 +5,7 @@ import models.boardDetails.Board;
 import models.boardDetails.Cell;
 import models.boardDetails.CellStatus;
 import models.exceptions.GameInvalidationException;
+import models.strategies.playingStrategies.EasyBotPlayingStrategy;
 import models.strategies.winningStrategy.WinningStrategy;
 
 import java.sql.SQLOutput;
@@ -45,6 +46,7 @@ public class Game {
         }
         //----------------- clearing the cell ------------------------
         Move recentMove = moves.get( moves.size()-1 );
+        EasyBotPlayingStrategy.getSet().add( recentMove.getCell() ); // to make sure the bot doesnt make the same move again
         Cell cell = recentMove.getCell();
         cell.setCellStatus(CellStatus.EMPTY);
         moves.remove( moves.size() -1 );
@@ -56,6 +58,7 @@ public class Game {
         // <-----------------Announcing and updating the use about the change------------------>
         System.out.println("move at row : " + cell.getRow() +", col : " +
                 cell.getCol() + " made by Player : " + cell.getPlayer().getName() + " is undone or removed !!" );
+
         System.out.println("-----------------------------------------------------------------------------");
         System.out.println();
 
